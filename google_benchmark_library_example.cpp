@@ -1,20 +1,18 @@
 #include <benchmark/benchmark.h>
 
 // Modify this function as needed
-int Function(int arg1)
+int HashFunction(int number)
 {
-    // Repalce this with code / operation which you want to benchmark
-    return arg1;
+    return number % 1000;
 }
 
-void BM_Function(benchmark::State& state)
+void BM_HashFunction(benchmark::State& state)
 {
   while (state.KeepRunning()) {
-    // Replace this as needed
-    int result = Function(state.range(0));
+    int hashValue = HashFunction(state.range(0));
   }
 }
 
-BENCHMARK(BM_Function)->Args({42}); // Modify this as needed
+BENCHMARK(BM_HashFunction)->Args({42});
 
 BENCHMARK_MAIN()
